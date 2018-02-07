@@ -72,6 +72,8 @@ router.post('/import2', multipartMiddleware, (req, res, next) => {
   const csvStream = csv.fromPath(csvPath, csvOptions).on('data', (data) => {
     // console.log(data);
     const item = new Product(data);
+    // or 
+    // const item = mongoose.model('Products', data);
 
     item.save((error) => {
       console.log(item)
